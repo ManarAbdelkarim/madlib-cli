@@ -4,29 +4,32 @@ import random
 import sys
 
 print("Welcome to Madlib game, please input the blanks")
+
+
 def start_game():
-    print("""
+    print(
+        """
     Konnichiwa😎!
     Welcome to Madlib game ....
     in this game you should fill the blanks
     after you finish I will surprise you 😄!
     Are you ready ?
     lets get started 🔥....
-    """)
+    """
+    )
+
 
 start_game()
 
+
 def read_template(file_path):
     try:
-      with open(file_path, "r") as f_path:
-       return f_path.read().strip("\n")
+        with open(file_path, "r") as f_path:
+            return f_path.read().strip("\n")
     except FileNotFoundError:
-      raise FileNotFoundError('A very specific bad thing happened.')
+        raise FileNotFoundError("A very specific bad thing happened.")
     except:
-       print("Other error")
-
-
-    
+        print("Other error")
 
 
 def parse_template(text):
@@ -57,23 +60,18 @@ def create_file(result):
         f.write(result)
 
 
-
-print(merge("It was a {} and {} {}.", ("dark", "stormy", "night")))
+# print(merge("It was a {} and {} {}.", ("dark", "stormy", "night")))
 def receive_data():
     text = read_template("assetsr/make_me_a_video_game_template.txt")
     stripped_text, parts_tuple = parse_template(text)
     user_answers = []
 
     for i in range(len(parts_tuple)):
-        x = input('enter a {} >'.format(parts_tuple[i]))
+        x = input("enter a {} >".format(parts_tuple[i]))
         user_answers.append(x)
     result = stripped_text.format(*user_answers)
     print(result)
     create_file(result)
 
 
-
-
-
-
-
+# receive_data()
